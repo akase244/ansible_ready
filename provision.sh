@@ -20,7 +20,7 @@ cat ~/.ssh/id_rsa.pub | sshpass -p "vagrant" ssh -o StrictHostKeyChecking=no vag
 # install ansible
 sudo yum install -y ansible
 
-# configure ansible
+# configure host for ansible
 cat <<EOF > hosts
 [provision_dest]
 192.168.33.11
