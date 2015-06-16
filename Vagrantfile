@@ -16,7 +16,6 @@ Vagrant.configure(2) do |config|
   config.vm.define :provision_dest do |node|
     node.vm.box = "chef/centos-5.10"
     node.vm.network :forwarded_port, guest: 22, host: 2002, id: "ssh"
-    node.vm.network :forwarded_port, guest: 80, host: 8000, id: "http"
     node.vm.network :private_network, ip: "192.168.33.11"
     node.vm.provision "shell", inline: <<-SHELL
       sudo yum install -y python-simplejson
