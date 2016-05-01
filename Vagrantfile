@@ -14,7 +14,7 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   # config.vm.box = "chef/centos-5.10"
   config.vm.define :provision_dest do |node|
-    node.vm.box = "chef/centos-5.10"
+    node.vm.box = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-5.11_chef-provisionerless.box"
     node.vm.network :forwarded_port, guest: 22, host: 2002, id: "ssh"
     node.vm.network :private_network, ip: "192.168.33.11"
     node.vm.provision "shell", inline: <<-SHELL
@@ -23,7 +23,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define :provision_from do |node|
-    node.vm.box = "chef/centos-6.5"
+    node.vm.box = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.7_chef-provisionerless.box"
     node.vm.network :forwarded_port, guest: 22, host: 2001, id: "ssh"
     node.vm.network :private_network, ip: "192.168.33.12"
     node.vm.provision :shell do |shell|
